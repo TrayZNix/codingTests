@@ -1,0 +1,27 @@
+// notification.proto
+syntax = "proto3";
+
+option java_package = "io.nuwe.technical.api.lib";
+option java_outer_classname = "NotificationProto";
+
+package NotificationProto;
+
+// Request payload
+message NotificationRequest {
+    int64 id = 1;
+    int64 userSenderId = 2;
+    int64 userReceiverId = 3;
+    int64 messageId = 4;
+    string body = 5;
+    string sentAt = 6;
+}
+
+// Response payload
+message NotificationResponse {
+    bool notification_arrived = 1;
+}
+
+// Notification service
+service NotificationService {
+    rpc pushNotification(NotificationRequest) returns (NotificationResponse);
+}
